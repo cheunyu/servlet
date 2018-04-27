@@ -20,16 +20,18 @@
         <!-- 类名映射 -->
         <filter-name>logFilter</filter-name>
         <!-- web请求路径设置 -->
-        <url-pattern>/*</url-pattern>
+        <servlet-name>FirstServlet</servlet-name>
     </filter-mapping>
+
     <filter>
         <filter-name>AuthenFilter</filter-name>
         <filter-class>filter.AuthenFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>AuthenFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <servlet-name>FirstServlet</servlet-name>
     </filter-mapping>
+
     <servlet>
         <!-- Servlet类名 -->
         <servlet-name>FirstServlet</servlet-name>
@@ -42,4 +44,37 @@
         <!-- web请求路径设置 -->
         <url-pattern>/firstServlet</url-pattern>
     </servlet-mapping>
+
+    <!-- 错误异常处理Servlet定义 -->
+    <servlet>
+        <servlet-name>ErrorHandler</servlet-name>
+        <servlet-class>exception.ErrorHandler</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ErrorHandler</servlet-name>
+        <url-pattern>/ErrorHandler</url-pattern>
+    </servlet-mapping>
+
+    <!-- error-code 错误代码异常处理 -->
+    <error-page>
+        <error-code>403</error-code>
+        <location>/ErrorHandler</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/ErrorHandler</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/ErrorHandler</location>
+    </error-page>
+    <!-- exception-type 应用程序异常处理 -->
+    <error-page>
+        <exception-type>javax.servlet.ServletException</exception-type>
+        <location>/ErrorHandler</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.io.IOException</exception-type>
+        <location>/ErrorHandler</location>
+    </error-page>
 </web-app>
