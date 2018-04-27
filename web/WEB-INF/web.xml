@@ -3,4 +3,43 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <filter>
+        <!-- Filter类名 -->
+        <filter-name>logFilter</filter-name>
+        <!-- Filter类的绝对路径 -->
+        <filter-class>filter.LogFilter</filter-class>
+        <init-param>
+            <!-- 过滤器init()初始化参数名称 -->
+            <param-name>Site</param-name>
+            <!-- 过滤器init()初始化参数设值 -->
+            <param-value>测试参数</param-value>
+        </init-param>
+    </filter>
+    <!-- filtermapping 位置决定多个过滤器执行顺序 -->
+    <filter-mapping>
+        <!-- 类名映射 -->
+        <filter-name>logFilter</filter-name>
+        <!-- web请求路径设置 -->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>AuthenFilter</filter-name>
+        <filter-class>filter.AuthenFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthenFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <servlet>
+        <!-- Servlet类名 -->
+        <servlet-name>FirstServlet</servlet-name>
+        <!-- Servlet类的绝对路径 -->
+        <servlet-class>servlet.FirstServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <!-- 类名映射 -->
+        <servlet-name>FirstServlet</servlet-name>
+        <!-- web请求路径设置 -->
+        <url-pattern>/firstServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

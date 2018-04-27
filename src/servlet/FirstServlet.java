@@ -1,4 +1,4 @@
-package test;
+package servlet;
 
 
 import javax.servlet.http.HttpServlet;
@@ -15,15 +15,15 @@ public class FirstServlet extends HttpServlet {
     
 
     public void init() {
-        System.out.printf("初始化方法，仅在类加载时运行一次");
+        System.out.println("Servlet初始化方法，仅在类加载时运行一次");
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
         String uname = request.getParameter("username");
-        System.out.printf("uname");
+        System.out.println(uname);
     }
 
     public void destory() {
-        System.out.printf("销毁实例");
+        System.out.println("销毁Servlet");
     }
 }
