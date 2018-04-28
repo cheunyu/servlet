@@ -55,6 +55,15 @@
         <url-pattern>/ErrorHandler</url-pattern>
     </servlet-mapping>
 
+    <!-- session -->
+    <servlet>
+        <servlet-name>SessionExample</servlet-name>
+        <servlet-class>session.SessionExample</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionExample</servlet-name>
+        <url-pattern>/sessiontest</url-pattern>
+    </servlet-mapping>
     <!-- error-code 错误代码异常处理 -->
     <error-page>
         <error-code>403</error-code>
